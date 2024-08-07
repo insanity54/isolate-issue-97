@@ -6,7 +6,7 @@ reproduction repository
 
 ## steps to reproduce
 
-cd ./packages/scout; pnpn i; pnpm build; npx isolate-package isolate
+    cd ./packages/scout; pnpn i; pnpm build; npx isolate-package isolate
 
 error as follows
 
