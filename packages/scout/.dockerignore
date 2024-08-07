@@ -1,0 +1,4 @@
+# STOP! This .dockerignore is probably not the .dockerignore you are looking for.
+# The dockerignore in the ROOT of the Docker context is the .dockerignore that docker uses.
+# We are using a monorepo and the docker build context is the root of this git repo.
+# thus, see ../../.dockerignore

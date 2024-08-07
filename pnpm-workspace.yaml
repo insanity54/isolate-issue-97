@@ -1,0 +1,11 @@
+## We differentiate packages and services in order to make Dockerfile builds less terse.
+## When we are building a docker image for a service, we need to include all their package dependencies.
+## Instead of having to manually pick and choose every dependent package into the build context, 
+## we can just copy all the packages/* into build context.
+## For example, when we are building fp/scout, we don't want to include @futurenet/next or @futurenet/strapi in the docker build context.
+## @futurenet/scout, @futurenet/strapi, @futurenet/next would all be considered services.
+## In other words, services/* depend on packages, but packages/* do not depend on services/*
+
+packages:
+  - 'packages/*'
+  - 'services/*'

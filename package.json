@@ -1,0 +1,28 @@
+{
+  "name": "futurenet",
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Warn: no test specified\" && exit 0",
+    "clean": "rm -rf node_modules && rm -rf pnpm-lock.yaml",
+    "dev": "concurrently npm:dev.db npm:dev.bot npm:dev.capture.worker npm:dev.capture.api",
+    "dev.db": "docker run -i -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=william --rm -p 5435:5432 postgres:16",
+    "dev.capture.api": "dotenvx run -f .env.capture.api -- pnpm --filter=@futurenet/capture run dev",
+    "dev.capture.worker": "dotenvx run -f .env.capture.worker -- pnpm --filter=@futurenet/capture run dev",
+    "dev.bot": "dotenvx run -f .env.bot -- pnpm --filter=@futurenet/bot run dev",
+    "dev.strapi2": "dotenvx run -f .env.development -- pnpm --filter=@futurenet/strapi run build && pnpm --filter=@futurenet/strapi run dev",
+    "dev.strapi": ""
+  },
+  "keywords": [],
+  "author": "@CJ_Clippy",
+  "license": "Unlicense",
+  "packageManager": "pnpm@9.5.0",
+  "dependencies": {
+    "types": "^0.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "lerna": "^8.1.7"
+  }
+}
